@@ -1,1 +1,40 @@
-<h1>Hello World</h1>
+<div class="container">
+  <!--  Header -->
+  <div>
+    <h4 class="m-3">Todo App</h4>
+    <hr />
+  </div>
+
+  <!-- AddTodo Form -->
+  <form class="d-flex mb-3">
+    <input class="form-control mr-3" type="text" />
+    <button type="submit" class="btn btn-primary btn-sm">
+      Add
+    </button>
+  </form>
+
+  <!-- TodoList -->
+  <div class="card">
+    <div class="card-header">
+      Todo List
+    </div>
+    <ul class="list-group list-group-flush">
+      <li
+        class="list-group-item list-group-flush d-flex"
+        *ngFor="let todo of todoList"
+      >
+        <input
+          type="text"
+          class="form-control border-0 mr-3"
+          [value]="todo.todo"
+        />
+        <div class="d-flex align-items-center">
+          <input class="mr-3" type="checkbox" />
+          <button class="btn btn-danger btn-sm font-weight-bold">
+            &mdash;
+          </button>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

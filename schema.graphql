@@ -1,0 +1,37 @@
+# This file was generated based on ".graphqlconfig". Do not edit manually.
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  createTodo(newTodo: NewTodoInput!): Todo!
+  deleteTodo(id: String!): Boolean!
+  updateTodo(id: String!, updatedTodo: UpdatedTodoInput!): Todo!
+}
+
+type Query {
+  getTodo(id: String!): Todo!
+  getTodos(skip: Float, take: Float): [Todo!]!
+}
+
+type Todo {
+  _id: String!
+  completed: Boolean!
+  createdAt: DateTime!
+  todo: String!
+  updatedAt: DateTime!
+}
+
+input NewTodoInput {
+  todo: String!
+}
+
+input UpdatedTodoInput {
+  completed: Boolean
+  todo: String
+}
+
+"The javascript `Date` as string. Type represents date and time as the ISO Date string."
+scalar DateTime
