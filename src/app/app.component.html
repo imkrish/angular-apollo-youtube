@@ -6,8 +6,8 @@
   </div>
 
   <!-- AddTodo Form -->
-  <form class="d-flex mb-3">
-    <input class="form-control mr-3" type="text" />
+  <form (ngSubmit)="onAddTodo(addTodoInput)" class="d-flex mb-3">
+    <input #addTodoInput class="form-control mr-3" type="text" />
     <button type="submit" class="btn btn-primary btn-sm">
       Add
     </button>
@@ -24,13 +24,23 @@
         *ngFor="let todo of todoList"
       >
         <input
+          #editTodoInput
           type="text"
           class="form-control border-0 mr-3"
+          (input)="onChangeTodo(todo, editTodoInput.value)"
           [value]="todo.todo"
         />
         <div class="d-flex align-items-center">
-          <input class="mr-3" type="checkbox" />
-          <button class="btn btn-danger btn-sm font-weight-bold">
+          <input
+            class="mr-3"
+            type="checkbox"
+            [checked]="todo.completed"
+            (click)="onToggleCompleted(todo)"
+          />
+          <button
+            (click)="onDeleteTodo(todo)"
+            class="btn btn-danger btn-sm font-weight-bold"
+          >
             &mdash;
           </button>
         </div>
