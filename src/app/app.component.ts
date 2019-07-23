@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Todo } from "../generated/graphql";
 
 @Component({
   selector: "app-root",
@@ -6,5 +7,20 @@ import { Component } from "@angular/core";
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent {
-  todoList: any[] = [{ todo: "Take a shower" }, { todo: "Poo" }];
+  todoList: Todo[] = [
+    {
+      _id: "1",
+      todo: "Take a shower",
+      completed: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      _id: "2",
+      todo: "Poo",
+      completed: false,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
+  ];
 }
