@@ -21,7 +21,7 @@
     <ul class="list-group list-group-flush">
       <li
         class="list-group-item list-group-flush d-flex"
-        *ngFor="let todo of todoList"
+        *ngFor="let todo of todoList$ | async"
       >
         <input
           #editTodoInput
