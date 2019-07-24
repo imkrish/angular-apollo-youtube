@@ -17,12 +17,22 @@ export class AppComponent {
   }
 
   onAddTodo(addTodoInput: HTMLInputElement) {
-    addTodoInput.value = "";
+    this.todoService.createTodo({ todo: addTodoInput.value }).subscribe(() => {
+      addTodoInput.value = "";
+    });
   }
 
-  onDeleteTodo(todo: Todo) {}
+  onDeleteTodo(todo: Todo) {
+    this.todoService.deleteTodo(todo._id).subscribe(console.log);
+  }
 
-  onToggleCompleted(todo: Todo) {}
+  onToggleCompleted(todo: Todo) {
+    this.todoService
+      .updateTodo(todo._id, { completed: !todo.completed })
+      .subscribe();
+  }
 
-  onChangeTodo = debounce((todo: Todo, newValue: string) => {}, 500);
+  onChangeTodo = debounce((todo: Todo, newValue: string) => {
+    this.todoService.updateTodo(todo._id, { todo: newValue }).subscribe();
+  }, 500);
 }

@@ -12,4 +12,32 @@ export class TodoGql {
       }
     }
   `;
+  static CreateTodoMutation = gql`
+    mutation createTodo($newTodo: NewTodoInput!) {
+      createTodo(newTodo: $newTodo) {
+        _id
+        todo
+        completed
+        createdAt
+        updatedAt
+      }
+    }
+  `;
+  static DeleteTodoMutation = gql`
+    mutation deleteTodo($id: String!) {
+      deleteTodo(id: $id)
+    }
+  `;
+
+  static UpdateTodoMutation = gql`
+    mutation updateTodo($id: String!, $updatedTodo: UpdatedTodoInput!) {
+      updateTodo(id: $id, updatedTodo: $updatedTodo) {
+        _id
+        todo
+        completed
+        createdAt
+        updatedAt
+      }
+    }
+  `;
 }
